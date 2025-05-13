@@ -19,7 +19,7 @@ def ai_call(year):
                 }
 
             ],
-            model="masukkan_model_id_disini",
+            model="masukkan_model_ai_disini",
             stream=False,
         )
 
