@@ -6,6 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 AI_KEY = "masukkan_api_key_disini" 
+# Ganti dengan API key Anda dari Groq 
 
 client = Groq(api_key=AI_KEY)
 
@@ -19,7 +20,7 @@ def ai_call(year):
                 }
 
             ],
-            model="masukkan_model_ai_disini",
+            model="masukan_model_ai_disini",  # Ganti dengan model AI yang Anda gunakan
             stream=False,
         )
 
@@ -42,14 +43,12 @@ def cek_usia():
         tahun_sekarang = datetime.now().year
         usia = tahun_sekarang - tahun_lahir
 
-        # Panggil fungsi AI
         ai_output = ai_call(tahun_lahir)
 
-        print(ai_output)
-
-        return render_template('cek_usia.html', usia=usia, tahun_lahir=tahun_lahir, ai_output=ai_output)
+        return render_template(
+            "cek_usia.html", usia=usia, tahun_lahir=tahun_lahir, ai_output=ai_output
+        )
     return render_template('cek_usia.html', usia= None)
-
     
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5020)
+    app.run(host="0.0.0.0" , port=5020)
